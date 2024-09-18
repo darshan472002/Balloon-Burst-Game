@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    background: url(Graphics/Symbol\ 3\ copy.png);
+    background-size: 100% 700px;
+}
+
+.game-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+}
+
+.machine {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#pipe {
+    position: absolute;
+    bottom: 1em;
+    right: 44em;
+    width: 250px;
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+#pipe.pump-active {
+    animation: pipeBlowAir 0.7s forwards;
+}
+
+@keyframes pipeBlowAir {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+#container {
+    position: absolute;
+    bottom: -1em;
+    right: 35em;
+    width: 250px;
+    display: flex;
+    transition: transform 0.7s ease;
+}
+
+#container.pump-active {
+    animation: containerCollapse 0.7s forwards;
+}
+
+#pump {
+    position: absolute;
+    bottom: 9em;
+    right: 35em;
+    width: 250px;
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+#pump.pump-active {
+    transform: translateY(80px);
+}
+
+@keyframes containerCollapse {
+    from {
+        transform: scaleX(1) scaleY(1) translateY(0) translateX(0);
+    }
+
+    to {
+        transform: scaleX(1.2) scaleY(0.7) translateY(10px) translateX(-10px);
+    }
+}
+
+#balloon-container {
+    position: fixed;
+    width: 700px;
+    height: 500px;
+}
+
+.balloon {
+    position: absolute;
+    bottom: 0;
+    right: 36px;
+    display: none;
+    width: 5px;
+    transition: width 0.5s ease, transform 4s ease;
+}
+
+.balloon img {
+    width: 100%;
+    height: auto;
+}
+
+.balloon.float {
+    transition: transform 6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform: translate(-200px, -400px);
+}
+
+/* Container for particles */
+.particle-container {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+@keyframes particleBurst {
+    from {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1.5) translate(var(--tx), var(--ty));
+    }
+}
+
+.thread {
+    position: absolute;
+    bottom: -5.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: auto;
+    display: none;
+}
+
+.alphabet {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: auto;
+    display: none;
+}
